@@ -7,13 +7,13 @@ namespace prog
   class Color
   {
     private:
-      // TODO: private fields required for color representation.
+      rgb_value red_, green_, blue_;
     public:
-      Color();
-      Color(const Color& c);
+      Color(); // default constructor
+      Color(const Color& c); // copy constructor
       Color(rgb_value r, rgb_value g, rgb_value b);
-      rgb_value red() const;
-      rgb_value& red();
+      rgb_value red() const; // accessor
+      rgb_value& red(); // mutator
       rgb_value green() const;
       rgb_value& green();
       rgb_value blue() const;
