@@ -92,4 +92,14 @@ namespace prog
       }
     }
   }
+
+  void Image::v_mirror(){ // iterate through all pixels within the range of 0 <= x < width_ and 0 <= y < height_ / 2 and change the pixel in (x, y) with the pixel in (x, height_ - 1 - y)
+    for(int i = 0; i < width_; i++){
+      for(int j = 0; j < height_ / 2; j++){
+        Color tmpPixel = pixels[i][j];
+        pixels[i][j] = pixels[i][height_ - 1 - j];
+        pixels[i][height_ - 1 - j] = tmpPixel;
+      }
+    }
+  }
 }

@@ -21,6 +21,7 @@ namespace prog
     void replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2);
     void fill(int x, int y, int w, int h, rgb_value r, rgb_value g, rgb_value b);
     void h_mirror();
+    void v_mirror();
   };
 }
 #endif

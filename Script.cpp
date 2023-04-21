@@ -92,6 +92,11 @@ namespace prog {
                 fill(x, y, w, h, r1, g1, b1);
                 continue;
             }
+            
+            if(command=="v_mirror"){
+                v_mirror();
+                continue;
+            }
 
             if(command == "h_mirror"){
                 h_mirror();
@@ -142,4 +147,8 @@ namespace prog {
     void Script::h_mirror(){ // calls to h_mirror function with image object
         image->h_mirror();
     }
+    
+    void Script::v_mirror(){ //calls to v_mirror function with image object
+        image->v_mirror();
+    }    
 }
