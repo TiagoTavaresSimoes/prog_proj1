@@ -33,10 +33,6 @@ namespace prog {
         clear_image_if_any();
     }
 
-    unsigned char convertToUChar(string s){ // auxiliar function that converts string to unsigned char
-        return static_cast<unsigned char>(stoi(s));
-    }
-
     void Script::run() {
         string command;
         while (input >> command) {
@@ -66,18 +62,19 @@ namespace prog {
             }
 
             if(command == "replace"){
-                // need to use strings because we are getting the values from the .txt file
-                string s_r1, s_g1, s_b1, s_r2, s_g2, s_b2;
-                input >> s_r1 >> s_g1 >> s_b1 >> s_r2 >> s_g2 >> s_b2;
+                // need to use ints because with unsigned chars each of these variables would be a single char in the .txt instead of the 
+                // whole number
+                int i_r1, i_g1, i_b1, i_r2, i_g2, i_b2;
+                input >> i_r1 >> i_g1 >> i_b1 >> i_r2 >> i_g2 >> i_b2;
 
-                // convert strings to unsigned char's
+                // convert integers to unsigned chars
                 rgb_value r1, g1, b1, r2, g2, b2;
-                r1 = convertToUChar(s_r1);
-                g1 = convertToUChar(s_g1);
-                b1 = convertToUChar(s_b1);
-                r2 = convertToUChar(s_r2);
-                g2 = convertToUChar(s_g2);
-                b2 = convertToUChar(s_b2);
+                r1 = static_cast<unsigned char>(i_r1);
+                g1 = static_cast<unsigned char>(i_g1);
+                b1 = static_cast<unsigned char>(i_b1);
+                r2 = static_cast<unsigned char>(i_r2);
+                g2 = static_cast<unsigned char>(i_g2);
+                b2 = static_cast<unsigned char>(i_b2);
                 
                 replace(r1, g1, b1, r2, g2, b2);
                 continue;
