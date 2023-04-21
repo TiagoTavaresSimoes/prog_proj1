@@ -49,13 +49,13 @@ namespace prog {
         return blue_;
     }
 
-    void Color::invert(){
+    void Color::invert(){ // inverts the rgb values of the pixel in question
         red_ = 255 - red_;
         green_ = 255 - green_;
         blue_ = 255 - blue_;
     }
 
-    void Color::to_gray_scale(){
+    void Color::to_gray_scale(){ // turns all the rgb values to the same value v that is calculated by doing (r + g + b) / 3
         rgb_value v = (red_ + green_ + blue_) / 3;
         red_ = v;
         green_ = v;

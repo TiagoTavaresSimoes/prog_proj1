@@ -84,11 +84,11 @@ namespace prog {
         saveToPNG(filename, image);
     }
 
-    void Script::invert(){
+    void Script::invert(){ // calls to invert function with image object
         image->invert();
     }
 
-    void Script::to_gray_scale(){
+    void Script::to_gray_scale(){ // calls to to_gray_scale function with image object
         image->to_gray_scale();
     }
 }

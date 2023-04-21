@@ -51,7 +51,7 @@ namespace prog
     return pixels[x][y];
   }
 
-  void Image::invert(){
+  void Image::invert(){ // iterates through all the pixels in the image and calls the invert function for each pixel
     for(int i = 0; i < width_; i++){
       for(int j = 0; j < height_; j++){
         pixels[i][j].invert();
@@ -59,7 +59,7 @@ namespace prog
     }
   }
 
-  void Image::to_gray_scale(){
+  void Image::to_gray_scale(){ // iterates through all the pixels in the image and calls the to_gray_scale function for each pixel
     for(int i = 0; i < width_; i++){
       for(int j = 0; j < height_; j++){
         pixels[i][j].to_gray_scale();

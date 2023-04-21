@@ -24,8 +24,11 @@ namespace prog
     void open();
     void blank();
     void save();
+    // table 7 functions
     void invert();
     void to_gray_scale();
+
+    // table 8 functions
   };
 }
 #endif
