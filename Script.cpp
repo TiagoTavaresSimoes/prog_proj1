@@ -48,8 +48,13 @@ namespace prog {
                 save();
                 continue;
             } 
-            // TODO ...
 
+            if (command == "invert"){
+                invert();
+                continue;
+            }
+
+            // TODO por aqui o nome das funções que é para dar run
         }
     }
     void Script::open() {
@@ -72,5 +77,9 @@ namespace prog {
         string filename;
         input >> filename;
         saveToPNG(filename, image);
+    }
+
+    void Script::invert(){
+        image->invert();
     }
 }

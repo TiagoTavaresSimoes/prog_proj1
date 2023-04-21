@@ -11,13 +11,14 @@ namespace prog
     public:
       Color(); // default constructor
       Color(const Color& c); // copy constructor
-      Color(rgb_value r, rgb_value g, rgb_value b);
+      Color(rgb_value r, rgb_value g, rgb_value b); // constructor using supplied (r, g, b) values
       rgb_value red() const; // accessor
       rgb_value& red(); // mutator
-      rgb_value green() const;
-      rgb_value& green();
-      rgb_value blue() const;
-      rgb_value& blue();
+      rgb_value green() const; // accessor
+      rgb_value& green(); // mutator
+      rgb_value blue() const; // accessor
+      rgb_value& blue(); // mutator
+      void invert();
   };
 }
 #endif

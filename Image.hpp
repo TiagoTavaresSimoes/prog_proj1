@@ -10,12 +10,13 @@ namespace prog
     int width_, height_;
     Color **pixels;
   public:
-    Image(int w, int h, const Color &fill = {255, 255, 255});
-    ~Image();
-    int width() const;
-    int height() const;
-    Color &at(int x, int y);
-    const Color &at(int x, int y) const;
+    Image(int w, int h, const Color &fill = {255, 255, 255}); // constructor
+    ~Image(); // destructor
+    int width() const; // accessor
+    int height() const; // accessor
+    Color &at(int x, int y); // mutator
+    const Color &at(int x, int y) const; // accessor
+    void invert();
   };
 }
 #endif

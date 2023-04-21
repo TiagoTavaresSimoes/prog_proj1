@@ -22,9 +22,9 @@ namespace prog
   Image::~Image()
   {
     for(int i = 0; i < width_; i++){
-      delete [] pixels[i]; // free memory of each array inside the main array
+      delete [] pixels[i]; // free/release memory of each array inside the main array
     }
-    delete [] pixels; // free memory of the main array
+    delete [] pixels; // free/release memory of the main array
   }
 
   // accessors
@@ -49,5 +49,13 @@ namespace prog
   Color& Image::at(int x, int y)
   {
     return pixels[x][y];
+  }
+
+  void Image::invert(){
+    for(int i = 0; i < width_; i++){
+      for(int j = 0; j < height_; j++){
+        pixels[i][j].invert();
+      }
+    }
   }
 }
