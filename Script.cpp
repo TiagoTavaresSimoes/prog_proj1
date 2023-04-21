@@ -92,6 +92,11 @@ namespace prog {
                 fill(x, y, w, h, r1, g1, b1);
                 continue;
             }
+            
+            if(command=="v_mirror"){
+                v_mirror();
+                continue;
+            }
 
             // TODO por aqui o nome das funções que é para dar run
         }
@@ -132,5 +137,8 @@ namespace prog {
 
     void Script::fill(int x, int y, int w, int h, rgb_value r, rgb_value g, rgb_value b){
         image->fill(x, y, w, h, r, g, b);
+    }
+    void Script::v_mirror(){ //calls to v_mirror function with image object
+        image->v_mirror();
     }
 }
