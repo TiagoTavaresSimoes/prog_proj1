@@ -2,31 +2,52 @@
 
 namespace prog
 {
+  // constructor
+
   Image::Image(int w, int h, const Color &fill)
   {
+    width_ = w;
+    height_ = h;
+    pixels = new Color*[width_]; // allocate array of width_ size
+    for(int i = 0; i < width_; i++){
+      pixels[i] = new Color[height_]; // allocate array of height_ size
+      for(int j = 0; j < height_; j++){
+        pixels[i][j] = fill;
+      }
+    }
   }
+
+  // destructor
+
   Image::~Image()
   {
+    for(int i = 0; i < width_; i++){
+      delete [] pixels[i]; // free memory of each array inside the main array
+    }
+    delete [] pixels; // free memory of the main array
   }
+
+  // accessors
+
   int Image::width() const
   {
-    return -1;
+    return width_;
   }
+
   int Image::height() const
   {
-    return -1;
-  }
-
-  // TODO: remove this DUMMY_color variable once you have appropriate fields for representing image pixels.
-  Color DUMMY_color;
-
-  Color& Image::at(int x, int y)
-  {
-    return DUMMY_color;
+    return height_;
   }
 
   const Color& Image::at(int x, int y) const
   {
-    return DUMMY_color;
+    return pixels[x][y];
+  }
+
+  // mutator
+
+  Color& Image::at(int x, int y)
+  {
+    return pixels[x][y];
   }
 }
