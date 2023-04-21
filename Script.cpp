@@ -54,6 +54,11 @@ namespace prog {
                 continue;
             }
 
+            if (command == "to_gray_scale"){
+                to_gray_scale();
+                continue;
+            }
+
             // TODO por aqui o nome das funções que é para dar run
         }
     }
@@ -81,5 +86,9 @@ namespace prog {
 
     void Script::invert(){
         image->invert();
+    }
+
+    void Script::to_gray_scale(){
+        image->to_gray_scale();
     }
 }

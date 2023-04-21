@@ -54,4 +54,11 @@ namespace prog {
         green_ = 255 - green_;
         blue_ = 255 - blue_;
     }
+
+    void Color::to_gray_scale(){
+        rgb_value v = (red_ + green_ + blue_) / 3;
+        red_ = v;
+        green_ = v;
+        blue_ = v;
+    }
 }

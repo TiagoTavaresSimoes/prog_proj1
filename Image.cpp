@@ -58,4 +58,12 @@ namespace prog
       }
     }
   }
+
+  void Image::to_gray_scale(){
+    for(int i = 0; i < width_; i++){
+      for(int j = 0; j < height_; j++){
+        pixels[i][j].to_gray_scale();
+      }
+    }
+  }
 }

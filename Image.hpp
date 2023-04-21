@@ -17,6 +17,7 @@ namespace prog
     Color &at(int x, int y); // mutator
     const Color &at(int x, int y) const; // accessor
     void invert();
+    void to_gray_scale();
   };
 }
 #endif
