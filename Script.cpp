@@ -67,39 +67,61 @@ namespace prog {
                 int i_r1, i_g1, i_b1, i_r2, i_g2, i_b2;
                 input >> i_r1 >> i_g1 >> i_b1 >> i_r2 >> i_g2 >> i_b2;
 
-                // convert integers to unsigned chars
+                // convert integers to rgb_values
                 rgb_value r1, g1, b1, r2, g2, b2;
-                r1 = static_cast<unsigned char>(i_r1);
-                g1 = static_cast<unsigned char>(i_g1);
-                b1 = static_cast<unsigned char>(i_b1);
-                r2 = static_cast<unsigned char>(i_r2);
-                g2 = static_cast<unsigned char>(i_g2);
-                b2 = static_cast<unsigned char>(i_b2);
+                r1 = (rgb_value) i_r1;
+                g1 = (rgb_value) i_g1;
+                b1 = (rgb_value) i_b1;
+                r2 = (rgb_value) i_r2;
+                g2 = (rgb_value) i_g2;
+                b2 = (rgb_value) i_b2;
                 
                 replace(r1, g1, b1, r2, g2, b2);
                 continue;
             }
 
             if(command == "fill"){
-                int x, y, w, h, i_r1, i_g1, i_b1;
-                input >> x >> y >> w >> h >> i_r1 >> i_g1 >> i_b1;
+                int x, y, w, h, i_r, i_g, i_b;
+                input >> x >> y >> w >> h >> i_r >> i_g >> i_b;
 
-                rgb_value r1, g1, b1;
-                r1 = static_cast<unsigned char>(i_r1);
-                g1 = static_cast<unsigned char>(i_g1);
-                b1 = static_cast<unsigned char>(i_b1);
+                rgb_value r, g, b;
+                r = (rgb_value) i_r;
+                g = (rgb_value) i_g;
+                b = (rgb_value) i_b;
 
-                fill(x, y, w, h, r1, g1, b1);
-                continue;
-            }
-            
-            if(command=="v_mirror"){
-                v_mirror();
+                fill(x, y, w, h, r, g, b);
                 continue;
             }
 
             if(command == "h_mirror"){
                 h_mirror();
+                continue;
+            }
+            
+            if(command == "v_mirror"){
+                v_mirror();
+                continue;
+            }
+
+            if(command == "add"){
+                string filename;
+                int x, y, i_r, i_g, i_b;
+                input >> filename >> i_r >> i_g >> i_b >> x >> y;
+                
+                rgb_value r, g, b;
+                r = (rgb_value) i_r;
+                g = (rgb_value) i_g;
+                b = (rgb_value) i_b;
+
+                add(filename, x, y, r, g, b);
+                continue;
+            }
+
+            if(command == "crop"){
+                int x, y, w, h;
+                input >> x >> y >> w >> h;
+
+                crop(x, y, w, h);
                 continue;
             }
 
@@ -147,8 +169,28 @@ namespace prog {
     void Script::h_mirror(){ // calls to h_mirror function with image object
         image->h_mirror();
     }
-    
-    void Script::v_mirror(){ //calls to v_mirror function with image object
+
+    void Script::v_mirror(){ // calls to v_mirror function with image object
         image->v_mirror();
-    }    
+    }
+
+    void Script::add(std::string filename, int x, int y, rgb_value r, rgb_value g, rgb_value b){
+        Image *png_image = loadFromPNG(filename); // uses loadFromPNG function to assign a pointer to the image we want to copy
+        image->add(png_image, x, y, r, g, b); // calls to add function with image object
+        delete png_image; // free/release memory
+    }
+
+    void Script::crop(int x, int y, int w, int h){
+        Image *tmp_image = new Image(w, h); // temporary image that will be the cropped version of image
+
+        for(int i = 0; i < w; i++){
+            for(int j = 0; j < h; j++){ // iterate through all pixels of the new image and gives the value of each pixel of the original image at that position + (x, y)
+                tmp_image->at(i, j) = image->at(x + i, y + j);
+            }
+        }
+        
+        Image *tmp = image;
+        image = tmp_image;
+        delete tmp;
+    }
 }

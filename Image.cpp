@@ -102,4 +102,15 @@ namespace prog
       }
     }
   }
+
+  void Image::add(Image *png_image, int x, int y, rgb_value r, rgb_value g, rgb_value b){
+    for(int i = 0; i < png_image->width(); i++){
+      for(int j = 0; j < png_image->height(); j++){ // iterate through all the pixels in the image we want to copy from 
+        Color pixel = png_image->pixels[i][j];
+        if(!(pixel.red() == r && pixel.green() == g && pixel.blue() == b)){ // checks if pixel is not equal to "neutral" color (r, g, b)
+          pixels[x + i][y + j] = pixel; // will modify each pixel of image to the pixel of png_image
+        }
+      }
+    }
+  }
 }
