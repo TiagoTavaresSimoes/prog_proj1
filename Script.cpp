@@ -93,6 +93,11 @@ namespace prog {
                 continue;
             }
 
+            if(command == "h_mirror"){
+                h_mirror();
+                continue;
+            }
+
             // TODO por aqui o nome das funções que é para dar run
         }
     }
@@ -130,7 +135,11 @@ namespace prog {
         image->replace(r1, g1, b1, r2, g2, b2);
     }
 
-    void Script::fill(int x, int y, int w, int h, rgb_value r, rgb_value g, rgb_value b){
+    void Script::fill(int x, int y, int w, int h, rgb_value r, rgb_value g, rgb_value b){ // calls to fill function with image object
         image->fill(x, y, w, h, r, g, b);
+    }
+
+    void Script::h_mirror(){ // calls to h_mirror function with image object
+        image->h_mirror();
     }
 }

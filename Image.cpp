@@ -75,7 +75,7 @@ namespace prog
     }
   }
 
-  void Image::fill(int x, int y, int w, int h, rgb_value r, rgb_value g, rgb_value b){
+  void Image::fill(int x, int y, int w, int h, rgb_value r, rgb_value g, rgb_value b){ // iterates through all the pixels in the given rectangle and changes them to (r, g, b)
     for(int i = x; i < x + w; i++){
       for(int j = y; j < y + h; j++){
         pixels[i][j] = Color(r, g, b);
@@ -83,5 +83,13 @@ namespace prog
     }
   }
 
-  //TODO replace function will operate in color.cpp here it will only iterate
+  void Image::h_mirror(){ // iterate through all pixels within the range of 0 <= x < width_ / 2 and 0 <= y < height_ and change the pixel in (x, y) with the pixel in (width_ - 1 - x, y)
+    for(int i = 0; i < width_ / 2; i++){
+      for(int j = 0; j < height_; j++){
+        Color tmpPixel = pixels[i][j];
+        pixels[i][j] = pixels[width_ - 1 - i][j];
+        pixels[width_ - 1 - i][j] = tmpPixel;
+      }
+    }
+  }
 }
