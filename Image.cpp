@@ -66,4 +66,14 @@ namespace prog
       }
     }
   }
+
+  void Image::replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2){
+    for(int i = 0; i < width_; i++){
+      for(int j = 0; j < height_; j++){
+        pixels[i][j].replace(r1, g1, b1, r2, g2, b2);
+      }
+    }
+  }
+
+  //TODO replace function will operate in color.cpp here it will only iterate
 }

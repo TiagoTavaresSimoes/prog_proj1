@@ -20,6 +20,7 @@ namespace prog
       rgb_value& blue(); // mutator
       void invert();
       void to_gray_scale();
+      void replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2);
   };
 }
 #endif

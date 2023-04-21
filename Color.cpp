@@ -61,4 +61,12 @@ namespace prog {
         green_ = v;
         blue_ = v;
     }
+
+    void Color::replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2){
+        if(red_ == r1 && green_ == g1 && blue_ == b1){
+            red_ = r2;
+            green_ = g2;
+            blue_ = b2;
+        }
+    }
 }
