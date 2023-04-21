@@ -67,10 +67,18 @@ namespace prog
     }
   }
 
-  void Image::replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2){
+  void Image::replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2){ // iterates through all the pixels in the image and calls the replace function for each pixel
     for(int i = 0; i < width_; i++){
       for(int j = 0; j < height_; j++){
         pixels[i][j].replace(r1, g1, b1, r2, g2, b2);
+      }
+    }
+  }
+
+  void Image::fill(int x, int y, int w, int h, rgb_value r, rgb_value g, rgb_value b){
+    for(int i = x; i < x + w; i++){
+      for(int j = y; j < y + h; j++){
+        pixels[i][j] = Color(r, g, b);
       }
     }
   }

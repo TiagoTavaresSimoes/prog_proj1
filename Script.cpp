@@ -80,6 +80,19 @@ namespace prog {
                 continue;
             }
 
+            if(command == "fill"){
+                int x, y, w, h, i_r1, i_g1, i_b1;
+                input >> x >> y >> w >> h >> i_r1 >> i_g1 >> i_b1;
+
+                rgb_value r1, g1, b1;
+                r1 = static_cast<unsigned char>(i_r1);
+                g1 = static_cast<unsigned char>(i_g1);
+                b1 = static_cast<unsigned char>(i_b1);
+
+                fill(x, y, w, h, r1, g1, b1);
+                continue;
+            }
+
             // TODO por aqui o nome das funções que é para dar run
         }
     }
@@ -113,7 +126,11 @@ namespace prog {
         image->to_gray_scale();
     }
 
-    void Script::replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2){
+    void Script::replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2){ // calls to replace function with image object
         image->replace(r1, g1, b1, r2, g2, b2);
+    }
+
+    void Script::fill(int x, int y, int w, int h, rgb_value r, rgb_value g, rgb_value b){
+        image->fill(x, y, w, h, r, g, b);
     }
 }

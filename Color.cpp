@@ -62,7 +62,7 @@ namespace prog {
         blue_ = v;
     }
 
-    void Color::replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2){
+    void Color::replace(rgb_value r1, rgb_value g1, rgb_value b1, rgb_value r2, rgb_value g2, rgb_value b2){ // for each pixel checks if it is equal to (r1, g1, b1) and if it is changes it to (r2, g2, b2)
         if(red_ == r1 && green_ == g1 && blue_ == b1){
             red_ = r2;
             green_ = g2;
