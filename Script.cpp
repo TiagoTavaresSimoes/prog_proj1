@@ -125,6 +125,16 @@ namespace prog {
                 continue;
             }
 
+            if(command == "rotate_left"){
+                rotate_left();
+                continue;
+            }
+
+            if(command == "rotate_right"){
+                rotate_right();
+                continue;
+            }
+
             // TODO por aqui o nome das funções que é para dar run
         }
     }
@@ -188,7 +198,41 @@ namespace prog {
                 tmp_image->at(i, j) = image->at(x + i, y + j);
             }
         }
+
+        // free/release memory
+        Image *tmp = image;
+        image = tmp_image;
+        delete tmp;
+    }
+
+    void Script::rotate_left(){
+        Image *tmp_image = new Image(image->height(), image->width()); // temporary image with image height as its width and vice-versa
         
+        // start from the last x (i) to 0 and from the first y and will put the value of the pixel of image in that position 
+        // on tmp_image 
+        for(int i = image->width() - 1; i >= 0; i--){
+            for(int j = 0; j < image->height(); j++){
+                tmp_image->at(j, image->width() - i - 1) = image->at(i , j);
+            }
+        }
+
+        // free/release memory
+        Image *tmp = image;
+        image = tmp_image;
+        delete tmp;
+    }
+
+    void Script::rotate_right(){
+        Image *tmp_image = new Image(image->height(), image->width()); // temporary image with image height as its width and vice-versa
+
+        // works the same way as rotate_left but height and width are inverted
+        for(int i = 0; i < image->width(); i++){
+            for(int j = image->height() - 1; j >= 0; j--){
+                tmp_image->at(image->height() - j - 1, i) = image->at(i , j);
+            }
+        }
+
+        // free/release memory
         Image *tmp = image;
         image = tmp_image;
         delete tmp;

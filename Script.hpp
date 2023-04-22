@@ -34,6 +34,8 @@ namespace prog
     void add(std::string filename, int x, int y, rgb_value r, rgb_value g, rgb_value b);
     // table 8 functions
     void crop(int x, int y, int w, int h);
+    void rotate_left();
+    void rotate_right();
   };
 }
 #endif
