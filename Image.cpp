@@ -1,4 +1,7 @@
 #include "Image.hpp"
+#include <algorithm>
+#include <vector>
+#include <iostream>
 
 namespace prog
 {
@@ -110,6 +113,49 @@ namespace prog
         if(!(pixel.red() == r && pixel.green() == g && pixel.blue() == b)){ // checks if pixel is not equal to "neutral" color (r, g, b)
           pixels[x + i][y + j] = pixel; // will modify each pixel of image to the pixel of png_image
         }
+      }
+    }
+  }
+
+  bool compare_r(Color a, Color b){ // aux function to sort pixels by red rgb_value
+    return a.red() < b.red();
+  }
+
+  bool compare_g(Color a, Color b){ // aux function to sort pixels by green rgb_value
+    return a.green() < b.green();
+  }
+
+  bool compare_b(Color a, Color b){ // aux function to sort pixels by blue rgb_value
+    return a.blue() < b.blue();
+  }
+
+  void Image::median_filter(int ws, Image* tmp_image){
+    for(int x = 0; x < width_; x++){
+      for(int y = 0; y < height_; y++){ // iterate through all pixels of main image
+        std::vector<Color> v; // created a vector v that will store all the neighbouring pixels of pixel[x][y] including itself
+        for(int nx = std::max(0, x - ws / 2); nx <= std::min(width_ - 1, x + ws / 2); nx++){
+          for(int ny = std::max(0, y - ws / 2); ny <= std::min(height_ - 1, y + ws / 2); ny++){ // iterate through all neighbouring pixels
+            v.push_back(pixels[nx][ny]); // add neighbouring pixel to vector v
+          }
+        }
+        rgb_value mr, mg, mb;
+
+        std::sort(v.begin(), v.end(), compare_r); // sort all pixels in vector v by red rgb_value
+        if(v.size() % 2 == 0){ // to apply the median, check if vector size is even or odd
+          mr = (v[v.size() / 2].red() + v[v.size() / 2 - 1].red()) / 2; // if vector size is even the median value will be the sum and division by 2 of the 2 middle values
+        } else mr = v[v.size() / 2].red(); // if vector size is odd the median value will be the middle one
+        
+        std::sort(v.begin(), v.end(), compare_g); // sort all pixels in vector v by green rgb_value
+        if(v.size() % 2 == 0){ // to apply the median, check if vector size is even or odd
+          mg = (v[v.size() / 2].green() + v[v.size() / 2 - 1].green()) / 2; // if vector size is even the median value will be the sum and division by 2 of the 2 middle values
+        } else mg = v[v.size() / 2].green(); // if vector size is odd the median value will be the middle one
+
+        std::sort(v.begin(), v.end(), compare_b); // sort all pixels in vector v by blue rgb_value
+        if(v.size() % 2 == 0){ // to apply the median, check if vector size is even or odd
+          mb = (v[v.size() / 2].blue() + v[v.size() / 2 - 1].blue()) / 2; // if vector size is even the median value will be the sum and division by 2 of the 2 middle values
+        } else mb = v[v.size() / 2].blue(); // if vector size is odd the median value will be the middle one
+
+        tmp_image->pixels[x][y] = Color(mr, mg, mb); // save the median (r, g, b) in this case (mr, mg, mb) in the temporary image
       }
     }
   }

@@ -135,9 +135,15 @@ namespace prog {
                 continue;
             }
 
-            // TODO por aqui o nome das funções que é para dar run
+            if(command == "median_filter"){
+                int ws;
+                input >> ws;
+                median_filter(ws);
+                continue;
+            }
         }
     }
+    
     void Script::open() {
         // Replace current image (if any) with image read from PNG file.
         clear_image_if_any();
@@ -234,6 +240,17 @@ namespace prog {
 
         // free/release memory
         Image *tmp = image;
+        image = tmp_image;
+        delete tmp;
+    }
+
+    void Script::median_filter(int ws){
+        Image *tmp_image = new Image(image->width(), image->height()); // temporary image with the same width and height as image
+
+        image->median_filter(ws, tmp_image); // executes median_filter function with image object
+
+        // free/release memory
+        Image* tmp = image;
         image = tmp_image;
         delete tmp;
     }

@@ -24,6 +24,8 @@ namespace prog
     void h_mirror();
     void v_mirror();
     void add(Image *png_image, int x, int y, rgb_value r, rgb_value g, rgb_value b);
+    // advanced funcionalities
+    void median_filter(int ws, Image* tmp_image);
   };
 }
 #endif
