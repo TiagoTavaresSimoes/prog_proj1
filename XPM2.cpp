@@ -3,6 +3,7 @@
 #include <sstream>
 #include <map>
 #include <vector>
+#include <iostream>
 
 using namespace std;
 
@@ -24,21 +25,21 @@ namespace prog {
             string hexaColor;
             istringstream iss(line);
             iss >> symbol >> c >> hexaColor;
-            vector<rgb_value> rgb; // will store red, green, blue values as rgb[0], rgb[1] and rgb[2]
+            vector<int> rgb; // will store red, green, blue values as rgb[0], rgb[1] and rgb[2]
 
             for(size_t j = 1; j < hexaColor.length() - 1; j += 2){ // ignore first char in hexaColor because it is the '#'
-                rgb_value tmp = 0;
+                int tmp = 0;
 
-                if(hexaColor[j] >= 'a' && hexaColor[j] <= 'z') tmp += (hexaColor[j] - 'a');
-                else tmp += hexaColor[j];
+                if(tolower(hexaColor[j]) >= 'a' && tolower(hexaColor[j]) <= 'f') tmp += (tolower(hexaColor[j]) - 'a' + 10) * 16;
+                else tmp += (hexaColor[j] - '0') * 16;
 
-                if(hexaColor[j + 1] >= 'a' && hexaColor[j + 1] <= 'z') tmp += (hexaColor[j + 1] - 'a');
-                else tmp += hexaColor[j + 1];
+                if(tolower(hexaColor[j + 1]) >= 'a' && tolower(hexaColor[j + 1]) <= 'f') tmp += (tolower(hexaColor[j + 1]) - 'a' + 10);
+                else tmp += (hexaColor[j + 1] - '0');
 
                 rgb.push_back(tmp);
             }
 
-            mapCharToColor.insert({symbol, {rgb[0], rgb[1], rgb[2]}});
+            mapCharToColor.insert({symbol, {(rgb_value) rgb[0], (rgb_value) rgb[1], (rgb_value) rgb[2]}});
         }
 
         Image* xpmImage = new Image(width, height); // create the new image with the xpm width and height

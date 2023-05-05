@@ -145,10 +145,7 @@ namespace prog {
             if(command == "xpm2_open"){
                 string filename;
                 input >> filename;
-                Image *tmpImage = loadFromXPM2(filename);
-                Image *tmp = image;
-                image = tmpImage;
-                delete tmp;
+                image = loadFromXPM2(filename);
                 continue;
             }
         }
