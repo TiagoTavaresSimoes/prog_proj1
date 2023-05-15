@@ -1,9 +1,12 @@
 #include "XPM2.hpp"
+#include "Color.hpp"
 #include <fstream>
 #include <sstream>
 #include <map>
 #include <vector>
 #include <iostream>
+#include <iomanip>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -60,7 +63,76 @@ namespace prog {
         return xpmImage;
     }
 
-    void saveToXPM2(const std::string& file, const Image* image) {
+    
 
-    }
+void saveToXPM2(const std::string& file, const Image* image) {
+        ofstream save_file(file);
+
+        save_file<< "! XPM2" << endl;//Write the first line in the file
+        int height =image->height();//get the height of the image
+        int width = image->width();//get the width of the image
+        vector<Color> colors;//create a vector to put all the colors that exist in the image
+        map<char, string> mapColortoChar; // created a map that will map a char to a hexadecimal color
+
+
+    for(int w = 0; w < width; w++){ //iterates through all the pixels in the image and save their color
+      for(int h = 0; h < height; h++){
+        rgb_value r = image->at(w,h).red();
+        rgb_value g = image->at(w,h).green();
+        rgb_value b = image->at(w,h).blue();
+        Color new_color(r,g,b);
+        bool found = false;
+        if(w==0 && h==0)colors.push_back(new_color);
+
+        for(auto i :colors){
+            if(new_color.red()==i.red() && new_color.green()==i.green() && new_color.blue()==i.blue()){found = true; break;}  //if the color already exists in the vector ignores the color
+        }
+        if(!found) colors.push_back(new_color);//if it reaches the final of the vector and doesn't exist that color pushes it into the vector
+
+      }
+    }   
+
+    int total_of_colors=colors.size();//the total of colors that exist in the image is the size of the vector colors
+
+save_file<< width <<' ' << height <<' '<< total_of_colors <<' ' << 1 << endl;//print the second line into the file (w:width ,h:height , total_of_colors: colors existent in the image, 1 = number of chars per color)
+    
+
+ for(int i = 0;i<total_of_colors;i++){//for every color transform it in a hexadecimal color form and maps it with the char
+    stringstream ss;
+    char symbol;
+    symbol= i+'a';
+    ss << '#'<< setw(2) << setfill('0')<< hex << colors[i].red() << setw(2) << setfill('0')<< hex <<colors[i].green()<< setw(2) << setfill('0')<< hex << colors[i].blue();
+    string hexaColor(ss.str());
+    mapColortoChar.insert({symbol, hexaColor});
+
 }
+
+
+ for(int i = 0;i<total_of_colors;i++){//for every color print the respective line
+ char used_char;
+ used_char=i+'a';
+     for(auto m : mapColortoChar){  if(m.first==used_char){
+    save_file<<m.first<<' '<<'c' <<' '<<m.second << endl;  
+    }      
+}
+ }
+        
+for(int w = 0; w < width; w++){// Transforms all the pixels in text
+    for(int h = 0; h < height; h++){;
+    Color pixel = image->at(w,h);//iterate trough all the pixels int the image
+    stringstream ss;
+
+    ss << '#'<< setw(2) << setfill('0')<<  hex << pixel.red() <<  setw(2) << setfill('0')<< hex <<pixel.green()<<  setw(2) << setfill('0')<< hex << pixel.blue();// transfrom the color of the pixel in hexadecimal color
+    string pixel_hexaColor(ss.str());
+        for(auto m : mapColortoChar){
+            if(m.second == pixel_hexaColor){
+                    save_file<<m.first;
+            }
+                }
+            }
+            save_file << endl;
+        }
+
+save_file.close();
+}
+} 

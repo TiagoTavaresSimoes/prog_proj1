@@ -148,6 +148,14 @@ namespace prog {
                 image = loadFromXPM2(filename);
                 continue;
             }
+
+            if(command == "xpm2_save"){
+        // Save current image to XPM2 file.
+        string filename;
+        input >> filename;
+        saveToXPM2(filename, image);
+        continue;
+            }
         }
     }
     
@@ -261,4 +269,6 @@ namespace prog {
         image = tmp_image;
         delete tmp;
     }
+
+
 }
