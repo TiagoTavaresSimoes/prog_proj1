@@ -1,15 +1,225 @@
->>>> [1] xpm2_open1 <<<<
+>>>> [1] xpm2_save1 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'blank' ...
 Executing command 'xpm2_open' ...
 Executing command 'save' ...
->>>> [2] xpm2_open2 <<<<
+Images differ at pixel (0, 0)
+0 0 0 vs 208 208 208
+
+=================================================================
+==7387==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa1c7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x559d08cfa2cd in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #2 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #3 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #4 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #5 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #6 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #7 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6a02 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:14
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 3 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6b47 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:16
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+SUMMARY: AddressSanitizer: 27 byte(s) leaked in 3 allocation(s).
+>>>> [2] xpm2_save2 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'blank' ...
 Executing command 'xpm2_open' ...
 Executing command 'save' ...
->>>> [3] xpm2_open3 <<<<
+Images differ at pixel (0, 0)
+0 255 255 vs 208 207 207
+
+=================================================================
+==7392==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa1c7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x559d08cfa2cd in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #2 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #3 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #4 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #5 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #6 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #7 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6a02 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:14
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 3 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6b47 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:16
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+SUMMARY: AddressSanitizer: 27 byte(s) leaked in 3 allocation(s).
+>>>> [3] xpm2_save3 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'blank' ...
 Executing command 'xpm2_open' ...
 Executing command 'save' ...
->>>> [4] xpm2_open4 <<<<
+Images differ at pixel (0, 0)
+0 0 0 vs 208 208 208
+
+=================================================================
+==7394==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa1c7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x559d08cfa2cd in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #2 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #3 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #4 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #5 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #6 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #7 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6a02 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:14
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 3 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6b47 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:16
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+SUMMARY: AddressSanitizer: 27 byte(s) leaked in 3 allocation(s).
+>>>> [4] xpm2_save4 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'blank' ...
 Executing command 'xpm2_open' ...
 Executing command 'save' ...
->>>> [5] xpm2_open5 <<<<
+Images differ at pixel (0, 0)
+0 0 0 vs 208 208 208
+
+=================================================================
+==7396==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa1c7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x559d08cfa2cd in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #2 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #3 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #4 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #5 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #6 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #7 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6a02 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:14
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 3 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6b47 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:16
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+SUMMARY: AddressSanitizer: 27 byte(s) leaked in 3 allocation(s).
+>>>> [5] xpm2_save5 <<<<
+Executing command 'open' ...
+Executing command 'xpm2_save' ...
+Executing command 'blank' ...
 Executing command 'xpm2_open' ...
 Executing command 'save' ...
+Images differ at pixel (0, 0)
+255 255 255 vs 207 207 207
+
+=================================================================
+==7407==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa1c7 in operator new(unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:99
+    #1 0x559d08cfa2cd in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #2 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #3 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #4 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #5 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #6 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #7 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6a02 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:14
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+Indirect leak of 3 byte(s) in 1 object(s) allocated from:
+    #0 0x7f4b368aa337 in operator new[](unsigned long) ../../../../src/libsanitizer/asan/asan_new_delete.cpp:102
+    #1 0x559d08ce6b47 in prog::Image::Image(int, int, prog::Color const&) /home/rafav/prog_proj1/Image.cpp:16
+    #2 0x559d08cfa36a in prog::Script::blank() /home/rafav/prog_proj1/Script.cpp:175
+    #3 0x559d08cf64ce in prog::Script::run() /home/rafav/prog_proj1/Script.cpp:45
+    #4 0x559d08cd85bb in prog::TestDriver::test_script(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xa95bb)
+    #5 0x559d08cd93bd in prog::TestDriver::run_test(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xaa3bd)
+    #6 0x559d08cdb233 in prog::TestDriver::test_scripts(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (/home/rafav/prog_proj1/test+0xac233)
+    #7 0x559d08cd7680 in main /home/rafav/prog_proj1/test.cpp:186
+    #8 0x7f4b35c8fd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+
+SUMMARY: AddressSanitizer: 27 byte(s) leaked in 3 allocation(s).
