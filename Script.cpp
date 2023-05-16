@@ -145,7 +145,15 @@ namespace prog {
             if(command == "xpm2_open"){
                 string filename;
                 input >> filename;
+                clear_image_if_any(); // need to clear memory not when we call xpm2_open but when we call xpm2_save because we need to free the memory of the blank image
                 image = loadFromXPM2(filename);
+                continue;
+            }
+
+            if(command == "xpm2_save"){
+                string filename;
+                input >> filename;
+                saveToXPM2(filename, image);
                 continue;
             }
         }
