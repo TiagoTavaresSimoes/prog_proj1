@@ -24,6 +24,7 @@ namespace prog
     void open();
     void blank();
     void save();
+  
     // table 7 functions
     void invert();
     void to_gray_scale();
@@ -37,7 +38,7 @@ namespace prog
     void rotate_left();
     void rotate_right();
     // advanced funcionalities
-    void median_filter(int ws);
+    void median_filter(int ws);  
   };
 }
 #endif
